@@ -5,14 +5,16 @@ import { DownloadIcon } from "@/components/icons";
 import { GridPageSkeleton } from "@/components/skeletons";
 import { Reveal, RevealWords } from "@/components/motion";
 import { ProductCard } from "@/components/product-card";
-import { isLocale, locales } from "@/i18n/config";
+import { defaultLocale, isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { fill } from "@/i18n/format";
 import { categorySlugs, getIssue, getIssueProducts, getIssues } from "@/lib/catalog";
 
 export async function generateStaticParams() {
   const issues = await getIssues();
-  return locales.flatMap((lang) => issues.map((issue) => ({ lang, slug: issue.slug })));
+  const params = locales.flatMap((lang) => issues.map((issue) => ({ lang, slug: issue.slug })));
+  // At least one entry is required to prerender; an unknown slug simply renders "not found".
+  return params.length ? params : [{ lang: defaultLocale, slug: "none" }];
 }
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/issues/[slug]">): Promise<Metadata> {

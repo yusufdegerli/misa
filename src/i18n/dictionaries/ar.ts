@@ -20,6 +20,7 @@ const ar: Dictionary = {
     language: "اللغة",
   },
   hero: {
+    comingSoon: "مجموعة جديدة قريبًا.",
     issue: "العدد {n}",
     discover: "اكتشف المجموعة",
     pdfCatalog: "كتالوج PDF",

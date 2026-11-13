@@ -18,6 +18,7 @@ const tr = {
     language: "Dil",
   },
   hero: {
+    comingSoon: "Yeni koleksiyon çok yakında.",
     issue: "Sayı {n}",
     discover: "Koleksiyonu keşfet",
     pdfCatalog: "PDF katalog",

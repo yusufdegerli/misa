@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState, type MouseEvent } from "react";
 import { ZoomIcon } from "@/components/icons";
 import { ProductVisual } from "@/components/product-visual";
@@ -48,7 +47,8 @@ export function ProductGallery({ product, alt, pendingLabel, zoomHint, thumbLabe
                 index === active ? "border-antique" : "border-hairline hover:border-ink/40"
               }`}
             >
-              <Image src={image.src} alt="" fill sizes="76px" className="object-cover" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={image.src} srcSet={image.srcSet} sizes="76px" alt="" loading="lazy" className="absolute inset-0 size-full object-contain" />
             </button>
           ))}
         </div>

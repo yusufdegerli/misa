@@ -20,6 +20,7 @@ const en: Dictionary = {
     language: "Language",
   },
   hero: {
+    comingSoon: "A new collection is coming soon.",
     issue: "Issue {n}",
     discover: "Discover the collection",
     pdfCatalog: "PDF catalogue",

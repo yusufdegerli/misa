@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { JewelryArt } from "@/components/brand";
+import { JewelryArt, Logo } from "@/components/brand";
 import { ArrowIcon, ChatIcon, DownloadIcon } from "@/components/icons";
 import { IssueCover } from "@/components/issue-cover";
 import { CoverParallax, Reveal, RevealWords } from "@/components/motion";
@@ -25,12 +25,22 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const dict = getDictionary(lang);
 
   const [issue, issues, allProducts] = await Promise.all([getCurrentIssue(), getIssues(), getProducts()]);
-  if (!issue) notFound();
-  const [issueProducts, cover] = await Promise.all([
+  if (!issue) {
+    // Nothing published yet: a calm placeholder instead of an error page.
+    return (
+      <section className="mx-auto flex min-h-[60vh] max-w-[1280px] flex-col items-center justify-center gap-6 px-5 text-center">
+        <Logo size="lg" />
+        <p className="font-display text-4xl font-light text-ink md:text-5xl">{dict.hero.comingSoon}</p>
+      </section>
+    );
+  }
+  const [issueProducts, chosenCover] = await Promise.all([
     getIssueProducts(issue.slug),
     getProductByCode(issue.coverProductCode),
   ]);
   const featured = issueProducts.filter((product) => product.featured).slice(0, 3);
+  // No cover chosen yet: fall back to the first featured piece, then to any piece of the issue.
+  const cover = chosenCover ?? featured[0] ?? issueProducts[0];
   const [lead, ...supporting] = featured;
 
   return (

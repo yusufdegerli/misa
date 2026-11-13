@@ -7,7 +7,7 @@ import { ProductSkeleton } from "@/components/skeletons";
 import { Reveal } from "@/components/motion";
 import { ProductCard, productDisplayName } from "@/components/product-card";
 import { ProductGallery } from "@/components/product-gallery";
-import { isLocale, locales } from "@/i18n/config";
+import { defaultLocale, isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { fill, formatNumber } from "@/i18n/format";
 import { getIssue, getIssueProducts, getProduct, getProducts, productSlug } from "@/lib/catalog";
@@ -15,7 +15,9 @@ import { localePath, mailtoLink, site, whatsappLink } from "@/lib/site";
 
 export async function generateStaticParams() {
   const products = await getProducts();
-  return locales.flatMap((lang) => products.map((product) => ({ lang, slug: productSlug(product.code) })));
+  const params = locales.flatMap((lang) => products.map((product) => ({ lang, slug: productSlug(product.code) })));
+  // At least one entry is required to prerender; an unknown slug simply renders "not found".
+  return params.length ? params : [{ lang: defaultLocale, slug: "none" }];
 }
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/product/[slug]">): Promise<Metadata> {

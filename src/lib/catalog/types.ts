@@ -3,9 +3,14 @@ import type { Localized } from "@/i18n/config";
 export const categorySlugs = ["rings", "necklaces", "earrings", "bracelets", "sets"] as const;
 export type CategorySlug = (typeof categorySlugs)[number];
 
+/** Widths each uploaded photo is stored at, as WebP. */
+export const imageWidths = [640, 1200, 2000] as const;
+
 export interface ProductImage {
-  /** Public URL of the original upload; the image CDN derives every display size from it. */
+  /** URL of the largest stored size. */
   src: string;
+  /** `srcset` listing every stored size, so the browser picks one for the screen. */
+  srcSet: string;
   width: number;
   height: number;
   /** Tiny blurred preview shown while the real image loads. */

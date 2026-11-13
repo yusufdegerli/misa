@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ViewTransition } from "react";
 import { JewelryArt } from "@/components/brand";
 import { productSlug, type Product } from "@/lib/catalog/types";
@@ -36,15 +35,25 @@ export function ProductVisual({
   const frame = (
     <div className={`tile flex aspect-[4/5] items-center justify-center ${className}`}>
       {photo ? (
-        <Image
+        // Photos are pre-sized WebP files in storage; srcset lets the browser pick the width,
+        // so the Next image optimiser is not needed.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
           src={photo.src}
-          alt={alt}
-          fill
+          srcSet={photo.srcSet}
           sizes={sizes}
-          priority={priority}
-          placeholder={photo.blurDataURL ? "blur" : "empty"}
-          blurDataURL={photo.blurDataURL}
-          className="tile-zoom object-contain"
+          alt={alt}
+          width={photo.width}
+          height={photo.height}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          decoding="async"
+          className="tile-zoom absolute inset-0 size-full object-contain"
+          style={
+            photo.blurDataURL
+              ? { backgroundImage: `url(${photo.blurDataURL})`, backgroundSize: "cover", backgroundPosition: "center" }
+              : undefined
+          }
         />
       ) : (
         <>

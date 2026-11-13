@@ -20,6 +20,7 @@ const hu: Dictionary = {
     language: "Nyelv",
   },
   hero: {
+    comingSoon: "Hamarosan új kollekció.",
     issue: "{n}. szám",
     discover: "A kollekció felfedezése",
     pdfCatalog: "PDF katalógus",

@@ -20,6 +20,7 @@ const ru: Dictionary = {
     language: "Язык",
   },
   hero: {
+    comingSoon: "Новая коллекция скоро.",
     issue: "Выпуск {n}",
     discover: "Смотреть коллекцию",
     pdfCatalog: "PDF-каталог",
