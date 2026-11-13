@@ -1,11 +1,12 @@
 import { Logo } from "@/components/brand";
 import { localeNames, locales } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { site } from "@/lib/site";
+import { mapsLink, phoneLink, site, whatsappLink } from "@/lib/site";
 
 export function SiteFooter({ footer }: { footer: Dictionary["footer"] }) {
   const contacts = [
-    site.whatsappNumber && { label: "WhatsApp", href: `https://wa.me/${site.whatsappNumber}` },
+    site.whatsappNumber && { label: `WhatsApp ${site.whatsappDisplay}`, href: whatsappLink() },
+    site.phone && { label: site.phone, href: phoneLink(site.phone) },
     site.telegramUsername && { label: "Telegram", href: `https://t.me/${site.telegramUsername}` },
     site.email && { label: site.email, href: `mailto:${site.email}` },
   ].filter(Boolean) as { label: string; href: string }[];
@@ -25,12 +26,24 @@ export function SiteFooter({ footer }: { footer: Dictionary["footer"] }) {
               href={contact.href}
               target={contact.href.startsWith("http") ? "_blank" : undefined}
               rel="noopener noreferrer"
-              className="text-ink hover:text-antique"
+              dir="ltr"
+              className="self-start text-ink hover:text-antique rtl:self-end"
             >
               {contact.label}
             </a>
           ))}
-          {site.address && <p className="text-steel">{site.address}</p>}
+          {site.address && (
+            <a
+              href={mapsLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              lang="tr"
+              className="mt-2 max-w-64 leading-relaxed text-steel hover:text-ink"
+            >
+              <span className="block text-ink">{site.addressTitle}</span>
+              {site.address}
+            </a>
+          )}
         </div>
         <div className="flex flex-[1_1_200px] flex-col gap-3 text-sm">
           <h2 className="text-[11px] tracking-[0.24em] text-antique uppercase">{footer.language}</h2>
