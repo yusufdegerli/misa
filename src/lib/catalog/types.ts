@@ -3,9 +3,6 @@ import type { Localized } from "@/i18n/config";
 export const categorySlugs = ["rings", "necklaces", "earrings", "bracelets", "sets"] as const;
 export type CategorySlug = (typeof categorySlugs)[number];
 
-export const platings = ["rhodium", "gold", "rose"] as const;
-export type Plating = (typeof platings)[number];
-
 export interface ProductImage {
   /** Public URL of the original upload; the image CDN derives every display size from it. */
   src: string;
@@ -40,7 +37,6 @@ export interface Product {
   weightGrams: number;
   sizes?: string;
   minOrder: number;
-  platings: Plating[];
   /** Ordered 4:5 photos. Empty until the owner uploads them; the site shows a placeholder meanwhile. */
   images: ProductImage[];
   featured?: boolean;

@@ -1,8 +1,8 @@
 # Mişa Silver
 
 Wholesale catalogue site for 925 sterling silver jewellery, presented as a seasonal magazine.
-Five languages (tr, en, ru, ar, hu), Arabic right-to-left. No prices or checkout: visitors build a
-quote list and send it via WhatsApp or email.
+Five languages (tr, en, ru, ar, hu), Arabic right-to-left. No prices or checkout: visitors ask about
+pieces via WhatsApp, Telegram or email, with the product code filled in.
 
 ## Run
 
@@ -20,7 +20,7 @@ Contact details are read from environment variables; copy `.env.example` to `.en
 - `src/app/[lang]/` pages: home (current issue), `issues`, `issues/[slug]`, `category/[slug]`, `product/[slug]`
 - `src/i18n/` languages, dictionaries (Turkish is the source; others must match its shape) and formatting
 - `src/lib/catalog/` catalogue API used by every page; currently backed by `sample-data.ts`
-- `src/components/` header, footer, product visuals, motion helpers, quote list
+- `src/components/` header, footer, product visuals, motion helpers
 
 ## Status
 

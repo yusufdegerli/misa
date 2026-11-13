@@ -44,8 +44,8 @@ export function ProductGallery({ product, alt, pendingLabel, zoomHint, thumbLabe
               onClick={() => setActive(index)}
               aria-label={thumbLabel.replace("{n}", String(index + 1))}
               aria-pressed={index === active}
-              className={`stage relative aspect-[4/5] overflow-hidden border ${
-                index === active ? "border-gold" : "border-pearl/15 hover:border-pearl/40"
+              className={`tile relative aspect-[4/5] overflow-hidden border ${
+                index === active ? "border-antique" : "border-hairline hover:border-ink/40"
               }`}
             >
               <Image src={image.src} alt="" fill sizes="76px" className="object-cover" />
@@ -70,7 +70,7 @@ export function ProductGallery({ product, alt, pendingLabel, zoomHint, thumbLabe
           />
         </div>
         <span
-          className={`pointer-events-none absolute start-5 bottom-5 hidden items-center gap-2 text-[11px] tracking-[0.14em] text-mist transition-opacity md:flex ${
+          className={`pointer-events-none absolute start-5 bottom-5 hidden items-center gap-2 text-[11px] tracking-[0.14em] text-steel transition-opacity md:flex ${
             zoom ? "opacity-0" : "opacity-100"
           }`}
         >

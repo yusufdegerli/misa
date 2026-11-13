@@ -18,15 +18,11 @@ interface ProductCardProps {
   locale: Locale;
   dict: Dictionary;
   sizes: string;
-  /** "dark" on the warm-black ground, "light" inside ivory sections. */
-  tone?: "dark" | "light";
   size?: "md" | "lg";
 }
 
-export function ProductCard({ product, locale, dict, sizes, tone = "dark", size = "md" }: ProductCardProps) {
+export function ProductCard({ product, locale, dict, sizes, size = "md" }: ProductCardProps) {
   const name = productDisplayName(product, dict);
-  const nameColor = tone === "dark" ? "text-pearl-strong" : "text-ivory-ink";
-  const metaColor = tone === "dark" ? "text-smoke" : "text-ivory-muted";
   return (
     // Full prefetch so the product page is ready on click and the photo can morph into place.
     <Link
@@ -42,10 +38,10 @@ export function ProductCard({ product, locale, dict, sizes, tone = "dark", size 
           size === "lg" ? "flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1" : "flex flex-col gap-1"
         }
       >
-        <span className={`font-display ${size === "lg" ? "text-[32px]" : "text-2xl"} leading-tight ${nameColor}`}>
+        <span className={`font-display ${size === "lg" ? "text-[32px]" : "text-2xl"} leading-tight text-ink`}>
           {name}
         </span>
-        <span dir="ltr" className={`self-start text-[11px] tracking-[0.14em] rtl:self-end ${metaColor}`}>
+        <span dir="ltr" className={`self-start text-[11px] tracking-[0.14em] rtl:self-end text-steel`}>
           {product.code} · {fill(dict.product.grams, { g: formatNumber(locale, product.weightGrams) })}
         </span>
       </div>

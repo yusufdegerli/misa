@@ -11,30 +11,30 @@ export function SiteFooter({ footer }: { footer: Dictionary["footer"] }) {
   ].filter(Boolean) as { label: string; href: string }[];
 
   return (
-    <footer id="contact" className="border-t border-line">
+    <footer id="contact" className="border-t border-hairline">
       <div className="mx-auto flex max-w-[1280px] flex-wrap justify-between gap-12 px-5 pt-18 pb-12 md:px-10">
         <div className="flex flex-[1_1_260px] flex-col items-start gap-3">
           <Logo size="lg" />
-          <p className="mt-2 max-w-72 text-sm leading-relaxed text-smoke">{footer.tagline}</p>
+          <p className="mt-2 max-w-72 text-sm leading-relaxed text-steel">{footer.tagline}</p>
         </div>
         <div className="flex flex-[1_1_200px] flex-col gap-3 text-sm">
-          <h2 className="text-[11px] tracking-[0.24em] text-gold uppercase">{footer.contact}</h2>
+          <h2 className="text-[11px] tracking-[0.24em] text-antique uppercase">{footer.contact}</h2>
           {contacts.map((contact) => (
             <a
               key={contact.label}
               href={contact.href}
               target={contact.href.startsWith("http") ? "_blank" : undefined}
               rel="noopener noreferrer"
-              className="text-pearl hover:text-gold-light"
+              className="text-ink hover:text-antique"
             >
               {contact.label}
             </a>
           ))}
-          {site.address && <p className="text-smoke">{site.address}</p>}
+          {site.address && <p className="text-steel">{site.address}</p>}
         </div>
         <div className="flex flex-[1_1_200px] flex-col gap-3 text-sm">
-          <h2 className="text-[11px] tracking-[0.24em] text-gold uppercase">{footer.language}</h2>
-          <p className="leading-loose text-pearl">
+          <h2 className="text-[11px] tracking-[0.24em] text-antique uppercase">{footer.language}</h2>
+          <p className="leading-loose text-ink">
             {locales.map((code, index) => (
               <span key={code} lang={code}>
                 {localeNames[code]}
@@ -44,7 +44,7 @@ export function SiteFooter({ footer }: { footer: Dictionary["footer"] }) {
           </p>
         </div>
       </div>
-      <p className="mx-auto max-w-[1280px] px-5 pb-10 text-xs text-smoke md:px-10">
+      <p className="mx-auto max-w-[1280px] px-5 pb-10 text-xs text-steel md:px-10">
         © {site.name}. {footer.rights}
       </p>
     </footer>

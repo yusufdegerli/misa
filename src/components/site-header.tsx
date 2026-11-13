@@ -5,17 +5,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/brand";
-import { CloseIcon, MenuIcon } from "@/components/icons";
-import { QuoteButton, type QuoteStrings } from "@/components/quote/quote-drawer";
+import { ChatIcon, CloseIcon, MenuIcon } from "@/components/icons";
 import { localeNames, locales, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { localePath } from "@/lib/site";
+import { localePath, site } from "@/lib/site";
 
 interface SiteHeaderProps {
   locale: Locale;
   nav: Dictionary["nav"];
   a11y: Dictionary["a11y"];
-  quote: QuoteStrings;
   currentIssueSlug?: string;
 }
 
@@ -43,7 +41,7 @@ export function LanguageSwitcher({ locale, className = "" }: { locale: Locale; c
           aria-label={localeNames[code]}
           aria-current={code === locale ? "true" : undefined}
           onClick={() => rememberLocale(code)}
-          className={`flex min-h-8 items-center ${code === locale ? "text-gold-light" : "text-smoke hover:text-pearl"}`}
+          className={`flex min-h-8 items-center ${code === locale ? "text-ink font-semibold" : "text-steel hover:text-ink"}`}
         >
           {code.toUpperCase()}
         </Link>
@@ -52,7 +50,7 @@ export function LanguageSwitcher({ locale, className = "" }: { locale: Locale; c
   );
 }
 
-export function SiteHeader({ locale, nav, a11y, quote, currentIssueSlug }: SiteHeaderProps) {
+export function SiteHeader({ locale, nav, a11y, currentIssueSlug }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -75,13 +73,12 @@ export function SiteHeader({ locale, nav, a11y, quote, currentIssueSlug }: SiteH
     currentIssueSlug && { href: localePath(locale, `/issues/${currentIssueSlug}`), label: nav.collection },
     { href: localePath(locale, "/#categories"), label: nav.categories },
     { href: localePath(locale, "/issues"), label: nav.issues },
-    { href: "#contact", label: nav.contact },
   ].filter(Boolean) as { href: string; label: string }[];
 
   return (
     <header
       className={`sticky top-0 z-40 border-b transition-colors duration-500 ${
-        scrolled || menuOpen ? "border-line bg-ink/85 backdrop-blur-xl" : "border-transparent bg-transparent"
+        scrolled || menuOpen ? "border-hairline bg-fog/85 backdrop-blur-xl" : "border-transparent bg-transparent"
       }`}
     >
       <nav
@@ -99,7 +96,7 @@ export function SiteHeader({ locale, nav, a11y, quote, currentIssueSlug }: SiteH
 
         <div className="hidden items-center gap-9 text-[13px] tracking-[0.08em] lg:flex">
           {links.map((link) => (
-            <Link key={link.label} href={link.href} className="text-pearl transition-colors hover:text-gold-light">
+            <Link key={link.label} href={link.href} className="text-ink transition-colors hover:text-antique">
               {link.label}
             </Link>
           ))}
@@ -107,18 +104,31 @@ export function SiteHeader({ locale, nav, a11y, quote, currentIssueSlug }: SiteH
 
         <div className="hidden items-center gap-5 lg:flex">
           <LanguageSwitcher locale={locale} />
-          <QuoteButton t={quote} />
+          <a
+            href="#contact"
+            className="flex min-h-11 items-center rounded-full border border-ink px-5 text-xs tracking-[0.08em] text-ink transition-colors hover:bg-ink hover:text-tile"
+          >
+            {nav.contact}
+          </a>
         </div>
 
         <div className="flex items-center gap-1 lg:hidden">
-          <QuoteButton t={quote} compact />
+          <a
+            href={`https://wa.me/${site.whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="flex size-11 items-center justify-center text-ink"
+          >
+            <ChatIcon size={22} />
+          </a>
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? nav.close : nav.menu}
-            className="flex size-11 items-center justify-center text-pearl"
+            className="flex size-11 items-center justify-center text-ink"
           >
             {menuOpen ? <CloseIcon size={22} /> : <MenuIcon size={22} />}
           </button>
@@ -129,7 +139,7 @@ export function SiteHeader({ locale, nav, a11y, quote, currentIssueSlug }: SiteH
         {menuOpen && (
           <motion.div
             id="mobile-menu"
-            className="border-t border-line lg:hidden"
+            className="border-t border-hairline lg:hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -141,11 +151,18 @@ export function SiteHeader({ locale, nav, a11y, quote, currentIssueSlug }: SiteH
                   key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-display py-2 text-4xl font-light text-pearl-strong"
+                  className="font-display py-2 text-4xl font-light text-ink"
                 >
                   {link.label}
                 </Link>
               ))}
+              <a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                className="font-display py-2 text-4xl font-light text-ink"
+              >
+                {nav.contact}
+              </a>
               <LanguageSwitcher locale={locale} className="mt-6 gap-5 text-[13px]" />
             </div>
           </motion.div>

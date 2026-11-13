@@ -40,20 +40,20 @@ async function IssueContent({ params }: Pick<PageProps<"/[lang]/issues/[slug]">,
 
   return (
     <div className="mx-auto max-w-[1280px] px-5 pt-12 pb-28 md:px-10 md:pt-20">
-      <header className="mb-20 border-b border-line pb-14">
+      <header className="mb-20 border-b border-hairline pb-14">
         <Reveal>
-          <p className="mb-6 text-xs tracking-[0.32em] text-gold uppercase">
+          <p className="mb-6 text-xs tracking-[0.32em] text-antique uppercase">
             {fill(dict.hero.issue, { n: issue.number })} · {issue.season[lang]}
           </p>
         </Reveal>
         <div className="flex flex-wrap items-end justify-between gap-8">
-          <h1 className="font-display text-[clamp(88px,14vw,200px)] leading-[0.85] font-light text-pearl-strong">
+          <h1 className="font-display text-[clamp(88px,14vw,200px)] leading-[0.85] font-light text-ink">
             <RevealWords text={issue.collectionName[lang]} />
           </h1>
           <Reveal className="max-w-md">
-            <p className="text-lg leading-relaxed text-mist">{issue.intro[lang]}</p>
+            <p className="text-lg leading-relaxed text-steel">{issue.intro[lang]}</p>
             {issue.pdfUrl && (
-              <a href={issue.pdfUrl} className="mt-6 inline-flex min-h-11 items-center gap-2.5 text-sm text-gold hover:text-gold-light">
+              <a href={issue.pdfUrl} className="mt-6 inline-flex min-h-11 items-center gap-2.5 text-sm text-antique hover:text-ink">
                 <DownloadIcon />
                 {dict.hero.pdfCatalog}
               </a>
@@ -67,7 +67,7 @@ async function IssueContent({ params }: Pick<PageProps<"/[lang]/issues/[slug]">,
         if (inCategory.length === 0) return null;
         return (
           <section key={category} aria-labelledby={`cat-${category}`} className="mb-24">
-            <h2 id={`cat-${category}`} className="font-display mb-10 text-4xl font-light text-pearl-strong md:text-5xl">
+            <h2 id={`cat-${category}`} className="font-display mb-10 text-4xl font-light text-ink md:text-5xl">
               {dict.categories.plural[category]}
             </h2>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-12 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">

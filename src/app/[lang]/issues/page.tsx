@@ -20,11 +20,11 @@ export default async function IssuesPage({ params }: PageProps<"/[lang]/issues">
 
   return (
     <div className="mx-auto max-w-[1280px] px-5 pt-12 pb-28 md:px-10 md:pt-20">
-      <header className="mb-16 flex flex-wrap items-end justify-between gap-6 border-b border-line pb-10">
-        <h1 className="font-display text-[clamp(64px,10vw,128px)] leading-[0.9] font-light text-pearl-strong">
+      <header className="mb-16 flex flex-wrap items-end justify-between gap-6 border-b border-hairline pb-10">
+        <h1 className="font-display text-[clamp(64px,10vw,128px)] leading-[0.9] font-light text-ink">
           <RevealWords text={dict.issues.title} />
         </h1>
-        <p className="max-w-sm text-[15px] text-mist">{dict.issues.intro}</p>
+        <p className="max-w-sm text-[15px] text-steel">{dict.issues.intro}</p>
       </header>
       <ul className="grid grid-cols-2 gap-6 lg:grid-cols-4">
         {issues.map((issue, index) => (

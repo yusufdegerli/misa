@@ -14,12 +14,14 @@ interface ProductVisualProps {
   priority?: boolean;
   /** Links this image to the same product's image on the next page for the morph animation. */
   morph?: boolean;
-  autoShine?: boolean;
   className?: string;
   artClassName?: string;
 }
 
-/** A 4:5 product photo on the dark stage, or a drawn stand-in while no photo exists. */
+/**
+ * A 4:5 product photo on a pure white tile, or a drawn stand-in while no photo exists.
+ * Photos are shot on white, so the tile and the photo read as one surface.
+ */
 export function ProductVisual({
   product,
   alt,
@@ -27,15 +29,12 @@ export function ProductVisual({
   sizes,
   priority,
   morph,
-  autoShine,
   className = "",
   artClassName = "w-[68%]",
 }: ProductVisualProps) {
   const photo = product.images[0];
   const frame = (
-    <div
-      className={`stage shine relative flex aspect-[4/5] items-center justify-center ${autoShine ? "shine-auto" : ""} ${className}`}
-    >
+    <div className={`tile flex aspect-[4/5] items-center justify-center ${className}`}>
       {photo ? (
         <Image
           src={photo.src}
@@ -45,14 +44,14 @@ export function ProductVisual({
           priority={priority}
           placeholder={photo.blurDataURL ? "blur" : "empty"}
           blurDataURL={photo.blurDataURL}
-          className="object-cover"
+          className="tile-zoom object-contain"
         />
       ) : (
         <>
-          <JewelryArt category={product.category} className={`h-auto ${artClassName}`} />
+          <JewelryArt category={product.category} className={`tile-zoom h-auto ${artClassName}`} />
           <span role="img" aria-label={alt} />
           {pendingLabel && (
-            <span className="absolute start-4 top-4 text-[10px] tracking-[0.22em] text-smoke uppercase">
+            <span className="absolute start-4 top-4 text-[10px] tracking-[0.22em] text-steel uppercase">
               {pendingLabel}
             </span>
           )}

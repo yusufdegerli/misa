@@ -10,7 +10,7 @@ export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   return (
     <span dir="ltr" className="inline-flex flex-col items-center leading-none">
       <span className={`text-gold-gradient font-script px-1.5 ${script}`}>Mişa</span>
-      <span className={`-mt-0.5 ps-[0.55em] font-sans tracking-[0.55em] text-pearl ${caps}`}>SILVER</span>
+      <span className={`-mt-0.5 ps-[0.55em] font-sans tracking-[0.55em] text-ink ${caps}`}>SILVER</span>
     </span>
   );
 }
@@ -21,10 +21,10 @@ export function SilverDefs() {
     <svg width="0" height="0" aria-hidden="true" className="absolute">
       <defs>
         <linearGradient id="misa-silver" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#F5F5F2" />
+          <stop offset="0" stopColor="#DADAD7" />
           <stop offset="0.4" stopColor="#8F8F8B" />
-          <stop offset="0.6" stopColor="#E6E6E2" />
-          <stop offset="1" stopColor="#5E5E5A" />
+          <stop offset="0.6" stopColor="#C9C9C5" />
+          <stop offset="1" stopColor="#6E6E6A" />
         </linearGradient>
       </defs>
     </svg>
@@ -40,25 +40,25 @@ export function JewelryArt({ category, className }: { category: CategorySlug; cl
       {category === "rings" && (
         <>
           <ellipse cx="100" cy="122" rx="58" ry="24" fill="none" stroke={silver} strokeWidth="8" />
-          <path d="M88 100 L100 84 L112 100 L100 108 Z" fill="#EDEDEA" stroke="#9A9A96" strokeWidth="1" />
+          <path d="M88 100 L100 84 L112 100 L100 108 Z" fill="#F2F2F0" stroke="#9A9A96" strokeWidth="1" />
           <path d="M92 99 L100 89 L108 99" fill="none" stroke="#FFFFFF" strokeWidth="1" opacity="0.7" />
         </>
       )}
       {category === "necklaces" && (
         <>
           <path d="M36 40 Q100 150 164 40" fill="none" stroke={silver} strokeWidth="3" />
-          <path d="M100 96 L100 106" stroke="#B5B5B1" strokeWidth="2" />
-          <path d="M100 106 L111 124 L100 146 L89 124 Z" fill="#E6E6E2" stroke="#8F8F8B" strokeWidth="1" />
+          <path d="M100 96 L100 106" stroke="#A5A5A1" strokeWidth="2" />
+          <path d="M100 106 L111 124 L100 146 L89 124 Z" fill="#F2F2F0" stroke="#8F8F8B" strokeWidth="1" />
         </>
       )}
       {category === "earrings" &&
         [70, 130].map((x) => (
           <g key={x}>
             <circle cx={x} cy="56" r="7" fill="none" stroke={silver} strokeWidth="3" />
-            <path d={`M${x} 63 L${x} 90`} stroke="#B5B5B1" strokeWidth="2" />
+            <path d={`M${x} 63 L${x} 90`} stroke="#A5A5A1" strokeWidth="2" />
             <path
               d={`M${x} 90 C${x - 12} 108 ${x - 12} 128 ${x} 140 C${x + 12} 128 ${x + 12} 108 ${x} 90 Z`}
-              fill="#E6E6E2"
+              fill="#F2F2F0"
               stroke="#8F8F8B"
               strokeWidth="1"
             />
@@ -73,20 +73,20 @@ export function JewelryArt({ category, className }: { category: CategorySlug; cl
             rx="70"
             ry="32"
             fill="none"
-            stroke="#FFFFFF"
+            stroke="#6E6E6A"
             strokeWidth="6"
             strokeDasharray="2 10"
-            opacity="0.45"
+            opacity="0.3"
           />
         </>
       )}
       {category === "sets" && (
         <>
           <path d="M50 36 Q100 120 150 36" fill="none" stroke={silver} strokeWidth="2.5" />
-          <path d="M100 79 L108 92 L100 106 L92 92 Z" fill="#E6E6E2" stroke="#8F8F8B" strokeWidth="1" />
+          <path d="M100 79 L108 92 L100 106 L92 92 Z" fill="#F2F2F0" stroke="#8F8F8B" strokeWidth="1" />
           <ellipse cx="78" cy="150" rx="30" ry="12" fill="none" stroke={silver} strokeWidth="5" />
           <circle cx="140" cy="132" r="5" fill="none" stroke={silver} strokeWidth="2.5" />
-          <path d="M140 137 C132 150 132 162 140 170 C148 162 148 150 140 137 Z" fill="#E6E6E2" stroke="#8F8F8B" strokeWidth="1" />
+          <path d="M140 137 C132 150 132 162 140 170 C148 162 148 150 140 137 Z" fill="#F2F2F0" stroke="#8F8F8B" strokeWidth="1" />
         </>
       )}
     </svg>

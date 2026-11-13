@@ -35,14 +35,14 @@ async function CategoryContent({ params }: Pick<PageProps<"/[lang]/category/[slu
 
   return (
     <div className="mx-auto max-w-[1280px] px-5 pt-12 pb-28 md:px-10 md:pt-20">
-      <header className="mb-16 flex flex-wrap items-end justify-between gap-6 border-b border-line pb-10">
-        <h1 className="font-display text-[clamp(64px,10vw,128px)] leading-[0.9] font-light text-pearl-strong">
+      <header className="mb-16 flex flex-wrap items-end justify-between gap-6 border-b border-hairline pb-10">
+        <h1 className="font-display text-[clamp(64px,10vw,128px)] leading-[0.9] font-light text-ink">
           <RevealWords text={dict.categories.plural[slug]} />
         </h1>
-        <p className="text-sm tracking-[0.12em] text-gold">{fill(dict.categories.count, { n: products.length })}</p>
+        <p className="text-sm tracking-[0.12em] text-antique">{fill(dict.categories.count, { n: products.length })}</p>
       </header>
       {products.length === 0 ? (
-        <p className="text-mist">{dict.categories.empty}</p>
+        <p className="text-steel">{dict.categories.empty}</p>
       ) : (
         <ul className="grid grid-cols-2 gap-x-4 gap-y-12 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
           {products.map((product, index) => (

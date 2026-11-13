@@ -62,4 +62,4 @@ export function isCategorySlug(value: string): value is CategorySlug {
 
 export { categorySlugs, productSlug };
 export type { CategorySlug, Issue, Product };
-export type { Plating, ProductImage } from "./types";
+export type { ProductImage } from "./types";

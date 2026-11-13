@@ -21,26 +21,26 @@ export function IssueCover({
     <div className="flex flex-col gap-4">
       <Link
         href={localePath(locale, `/issues/${issue.slug}`)}
-        className={`group shine flex aspect-[3/4] flex-col justify-between bg-gradient-to-b from-[#1c1a17] to-[#0b0a09] p-7 transition-transform duration-700 ease-soft hover:-translate-y-1.5 ${
-          current ? "border border-gold" : "border border-pearl/15"
+        className={`group flex aspect-[3/4] flex-col justify-between bg-tile p-7 transition-transform duration-700 ease-soft hover:-translate-y-1.5 ${
+          current ? "border border-antique" : "border border-hairline"
         }`}
       >
-        <span className={`text-[10px] tracking-[0.3em] uppercase ${current ? "text-gold" : "text-smoke"}`}>
+        <span className={`text-[10px] tracking-[0.3em] uppercase ${current ? "text-antique" : "text-steel"}`}>
           {fill(dict.hero.issue, { n: issue.number })}
           {current ? ` · ${dict.issues.current}` : ""}
         </span>
-        <span className="font-display text-[64px] leading-[0.9] font-light text-pearl-strong">
+        <span className="font-display text-[64px] leading-[0.9] font-light text-ink">
           {issue.collectionName[locale]}
         </span>
       </Link>
       <div className="flex items-center justify-between text-[13px]">
-        <span className="text-pearl-strong">{issue.season[locale]}</span>
+        <span className="text-ink">{issue.season[locale]}</span>
         {issue.pdfUrl ? (
-          <a href={issue.pdfUrl} className="text-gold hover:text-gold-light">
+          <a href={issue.pdfUrl} className="text-antique hover:text-ink">
             PDF ↓
           </a>
         ) : (
-          <Link href={localePath(locale, `/issues/${issue.slug}`)} className="text-gold hover:text-gold-light">
+          <Link href={localePath(locale, `/issues/${issue.slug}`)} className="text-antique hover:text-ink">
             {dict.issues.view}
           </Link>
         )}

@@ -54,7 +54,6 @@ export const sampleProducts: Product[] = [
     weightGrams: 4.2,
     sizes: "US 5–10",
     minOrder: 12,
-    platings: ["rhodium", "gold", "rose"],
     images: [],
     featured: true,
   },
@@ -66,7 +65,6 @@ export const sampleProducts: Product[] = [
     weightGrams: 3.6,
     sizes: "US 5–9",
     minOrder: 12,
-    platings: ["rhodium", "gold"],
     images: [],
   },
   {
@@ -84,7 +82,6 @@ export const sampleProducts: Product[] = [
     weightGrams: 6.8,
     sizes: "45 + 5 cm",
     minOrder: 12,
-    platings: ["rhodium", "gold", "rose"],
     images: [],
     featured: true,
   },
@@ -96,7 +93,6 @@ export const sampleProducts: Product[] = [
     weightGrams: 5.1,
     sizes: "42 + 3 cm",
     minOrder: 12,
-    platings: ["rhodium", "gold"],
     images: [],
   },
   {
@@ -113,7 +109,6 @@ export const sampleProducts: Product[] = [
     issueSlug: "winter-2026",
     weightGrams: 3.1,
     minOrder: 12,
-    platings: ["rhodium", "gold", "rose"],
     images: [],
     featured: true,
   },
@@ -124,7 +119,6 @@ export const sampleProducts: Product[] = [
     issueSlug: "winter-2026",
     weightGrams: 2.4,
     minOrder: 24,
-    platings: ["rhodium"],
     images: [],
   },
   {
@@ -135,7 +129,6 @@ export const sampleProducts: Product[] = [
     weightGrams: 9.4,
     sizes: "17–19 cm",
     minOrder: 12,
-    platings: ["rhodium", "gold"],
     images: [],
   },
   {
@@ -146,7 +139,6 @@ export const sampleProducts: Product[] = [
     weightGrams: 11.2,
     sizes: "18 cm",
     minOrder: 12,
-    platings: ["rhodium", "rose"],
     images: [],
   },
   {
@@ -156,7 +148,6 @@ export const sampleProducts: Product[] = [
     issueSlug: "winter-2026",
     weightGrams: 14.2,
     minOrder: 6,
-    platings: ["rhodium", "gold", "rose"],
     images: [],
   },
   {
@@ -167,7 +158,6 @@ export const sampleProducts: Product[] = [
     weightGrams: 4.8,
     sizes: "US 6–10",
     minOrder: 12,
-    platings: ["gold", "rose"],
     images: [],
   },
   {
@@ -177,7 +167,6 @@ export const sampleProducts: Product[] = [
     issueSlug: "autumn-2026",
     weightGrams: 3.3,
     minOrder: 12,
-    platings: ["rhodium", "gold"],
     images: [],
   },
   {
@@ -188,7 +177,6 @@ export const sampleProducts: Product[] = [
     weightGrams: 7,
     sizes: "45 cm",
     minOrder: 12,
-    platings: ["gold"],
     images: [],
   },
   {
@@ -199,7 +187,6 @@ export const sampleProducts: Product[] = [
     weightGrams: 10.1,
     sizes: "17 cm",
     minOrder: 12,
-    platings: ["rhodium", "gold", "rose"],
     images: [],
   },
 ];
