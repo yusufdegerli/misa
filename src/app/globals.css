@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+/*
+ * Mişa Silver design tokens.
+ * Warm black ground, champagne gold accent (used sparingly), pearl-silver text, ivory for light sections.
+ */
+:root {
+  --ink: #0e0d0b;
+  --ink-raised: #141311;
+  --charcoal: #1c1a17;
+  --pearl: #c9c9c6;
+  --pearl-strong: #f2efe9;
+  --smoke: #8e8b85;
+  --mist: #a9a6a0;
+  --gold: #c9a45c;
+  --gold-light: #e8cf94;
+  --gold-deep: #8a6a2e;
+  --ivory: #f5f1ea;
+  --ivory-ink: #1a1815;
+  --ivory-muted: #6b665e;
+  --line: rgb(201 201 198 / 0.12);
+
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-raised: var(--ink-raised);
+  --color-charcoal: var(--charcoal);
+  --color-pearl: var(--pearl);
+  --color-pearl-strong: var(--pearl-strong);
+  --color-smoke: var(--smoke);
+  --color-mist: var(--mist);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-deep: var(--gold-deep);
+  --color-ivory: var(--ivory);
+  --color-ivory-ink: var(--ivory-ink);
+  --color-ivory-muted: var(--ivory-muted);
+  --color-line: var(--line);
+
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-script: var(--font-great-vibes), cursive;
+  --font-arabic-sans: var(--font-noto-arabic), system-ui, sans-serif;
+  --font-arabic-display: var(--font-amiri), serif;
+
+  --ease-soft: var(--ease-out-soft);
+}
+
+html {
+  background: var(--ink);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--ink);
+  color: var(--pearl);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Arabic uses its own families for body and display text. */
+html[lang="ar"] body {
+  font-family: var(--font-arabic-sans);
+}
+html[lang="ar"] .font-display {
+  font-family: var(--font-arabic-display);
+  /* Arabic glyphs rise and fall further than Latin ones; tight display leading would clip them. */
+  line-height: 1.35;
+}
+/* Letter-spacing breaks the joins between Arabic letters. Latin-only bits (logo, codes) keep theirs. */
+html[lang="ar"] body :not([dir="ltr"], [dir="ltr"] *) {
+  letter-spacing: 0;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 1px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+/* Lenis smooth scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Gold logo gradient applied to text. */
+.text-gold-gradient {
+  background: linear-gradient(100deg, #8a6a2e 0%, #e8cf94 42%, #c9a45c 62%, #7a5a24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Signature effect: a diagonal light sweep over silver. */
+.shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 36%, rgb(255 255 255 / 0.13) 50%, transparent 64%);
+  transform: translateX(-130%);
+  transition: transform 1.2s var(--ease-out-soft);
+}
+.shine:hover::after,
+.group:hover .shine::after,
+.group:focus-visible .shine::after {
+  transform: translateX(130%);
+}
+.shine-auto::after {
+  animation: shine-sweep 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes shine-sweep {
+  0%,
+  55% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+/* Photo stage behind every product image and placeholder. */
+.stage {
+  background: radial-gradient(ellipse 70% 60% at 50% 42%, #2e2a25 0%, #151311 62%, #0b0a09 100%);
+}
+
+/* Shared-element morph between a product card and its product page. */
+::view-transition-group(.morph) {
+  animation-duration: 450ms;
+  animation-timing-function: var(--ease-out-soft);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: via-blur;
+}
+@keyframes via-blur {
+  30% {
+    filter: blur(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shine::after,
+  .shine-auto::after {
+    animation: none;
+    transition: none;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

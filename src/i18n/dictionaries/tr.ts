@@ -1,0 +1,121 @@
+const tr = {
+  meta: {
+    description: "925 ayar gümüş takı toptan kataloğu.",
+  },
+  a11y: {
+    skipToContent: "İçeriğe geç",
+    breadcrumb: "Konum",
+    mainMenu: "Ana menü",
+    home: "Mişa Silver ana sayfa",
+  },
+  nav: {
+    collection: "Koleksiyon",
+    categories: "Kategoriler",
+    issues: "Sayılar",
+    contact: "İletişim",
+    quoteList: "Teklif Listesi",
+    menu: "Menü",
+    close: "Kapat",
+    language: "Dil",
+  },
+  hero: {
+    issue: "Sayı {n}",
+    discover: "Koleksiyonu keşfet",
+    pdfCatalog: "PDF katalog",
+    scroll: "Kaydır",
+  },
+  categories: {
+    title: "Kategoriler",
+    intro: "Her parça 925 ayar gümüş. Ürün kodu, gramaj ve minimum sipariş bilgisi her sayfada.",
+    explore: "Keşfet",
+    count: "{n} ürün",
+    empty: "Bu kategoride henüz ürün yok.",
+    plural: {
+      rings: "Yüzükler",
+      necklaces: "Kolyeler",
+      earrings: "Küpeler",
+      bracelets: "Bileklikler",
+      sets: "Setler",
+    },
+    singular: {
+      rings: "Yüzük",
+      necklaces: "Kolye",
+      earrings: "Küpe",
+      bracelets: "Bileklik",
+      sets: "Set",
+    },
+    /** How a product's display name is built from its own name and its type. */
+    productName: "{name} {type}",
+  },
+  editorial: {
+    eyebrow: "Editörün seçimi",
+    title: "Işığı yakalayan, zamana dayanan.",
+    body: "İnce işçilik ile sade formlar bir arada. Rodyum, altın ve rose kaplama seçenekleriyle; tüm parçalar toptan siparişe uygun.",
+  },
+  how: {
+    title: "Toptan teklif, üç adımda",
+    steps: [
+      { title: "Seçin", body: "Beğendiğiniz ürünleri kaplama ve adet bilgisiyle teklif listesine ekleyin." },
+      { title: "Gönderin", body: "Liste, ürün kodlarıyla hazır bir WhatsApp veya e-posta mesajına dönüşür." },
+      { title: "Görüşün", body: "Ekibimiz fiyat ve teslim bilgisiyle size doğrudan döner." },
+    ],
+  },
+  issues: {
+    title: "Sayılar",
+    intro: "Her sezon, ayrı bir sayı. Hepsi PDF olarak indirilebilir.",
+    current: "Güncel",
+    view: "Sayıyı gör",
+  },
+  product: {
+    code: "Ürün kodu",
+    purity: "Ayar",
+    purityValue: "925 sterling gümüş",
+    weight: "Ağırlık",
+    grams: "≈ {g} g",
+    sizes: "Ölçüler",
+    minOrder: "Minimum sipariş",
+    pieces: "{n} adet",
+    plating: "Kaplama",
+    platings: {
+      rhodium: "Rodyum",
+      gold: "Altın",
+      rose: "Rose",
+    },
+    addToQuote: "Teklif listesine ekle",
+    added: "Listeye eklendi",
+    askWhatsApp: "WhatsApp ile sor",
+    whatsAppQuestion: "Merhaba, {code} ({name}) hakkında bilgi almak istiyorum.",
+    priceNote: "Fiyat bilgisi teklif üzerine paylaşılır.",
+    sameIssue: "Aynı sayıdan",
+    fullCollection: "Tüm koleksiyon",
+    zoomHint: "Yakınlaştırmak için üzerinde gezin",
+    photoPending: "Fotoğraf yakında",
+    gallery: "Görsel {n}",
+  },
+  quote: {
+    title: "Teklif Listesi",
+    empty: "Listeniz henüz boş. Ürün sayfalarından ekleyebilirsiniz.",
+    summary: "{count} ürün · toplam {total} adet",
+    preview: "Gönderilecek mesaj",
+    intro: "Merhaba, aşağıdaki ürünler için teklif almak istiyorum:",
+    sendWhatsApp: "WhatsApp ile gönder",
+    sendEmail: "E-posta ile gönder",
+    emailSubject: "Teklif talebi",
+    min: "min. {n}",
+    decrease: "Adet azalt",
+    increase: "Adet artır",
+    remove: "Kaldır",
+    clear: "Listeyi temizle",
+  },
+  footer: {
+    tagline: "925 ayar gümüş takı · Toptan satış",
+    contact: "İletişim",
+    language: "Dil",
+    rights: "Tüm hakları saklıdır.",
+  },
+};
+
+export default tr;
+
+/** Shape every language's dictionary must match; Turkish is the source language. */
+export type Dictionary = typeof tr;
